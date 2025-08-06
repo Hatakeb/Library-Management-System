@@ -1,0 +1,31 @@
+from django.urls import path
+from .import views
+
+urlpatterns = [
+    path('', views.index, name='LMS-index'),
+    path('liberianpanel', views.liberianpanel, name='LMS-liberianpanel'),
+    path('liberian/add-book/', views.add_book, name='LMS-add-book'),
+    path('staffpanel', views.staffpanel, name='LMS-staffpanel'),
+    path('studentpanel', views.studentpanel, name='LMS-studentpanel'),
+    path('liberianlogin',views.liberianlogin, name='LMS-liberianlogin'),
+    path('liberiansignup',views.liberiansignup, name='LMS-liberiansignup'),
+    path('stafflogin',views.stafflogin, name='LMS-stafflogin'),
+    path('staffsignup',views.staffsignup, name='LMS-staffsignup'),
+    path('studentlogin',views.studentlogin, name='LMS-studentlogin'),
+    path('studentsignup',views.studentsignup, name='LMS-studentsignup'),
+    path('studentdashboard', views.studentdashboard, name='LMS-studentdashboard'),
+    path('logout/', views.user_logout, name='LMS-logout'),
+    path('staffdashboard', views.staffdashboard, name='LMS-staffdashboard'),
+    path('liberiandashboard', views.liberiandashboard, name='LMS-liberiandashboard'),
+    path('books/', views.book_list, name='LMS-booklist'),
+    path('books/<int:book_id>/', views.book_detail, name='LMS-bookdetail'),
+    path('books/<int:book_id>/borrow/', views.borrow_book, name='LMS-borrowbook'),
+    path('borrowed/', views.borrowed_books, name='LMS-borrowedbooks'),
+    path('borrowed/<int:borrow_id>/return/', views.return_book, name='LMS-returnbook'),
+    path('studentprofile/', views.student_profile, name='LMS-studentprofile'),
+    path('edit_student_status/<int:student_id>/', views.edit_student_status, name='LMS-edit-student-status'),
+    path('edit_staff_status/<int:staff_id>/', views.edit_staff_status, name='LMS-edit-staff-status'),
+    path('registered_students_list/', views.registered_students_list, name='LMS-registered-students-list'),
+    path('student_detail/<int:student_id>/', views.student_detail, name='LMS-student-detail'),
+    path('issued/', views.issued_books, name='LMS-issuedbooks'),
+]

@@ -1,0 +1,10 @@
+from django.contrib import admin
+from .models import Book, Author, Student, Staff, Liberian, Borrowed
+
+# Register your models here.
+admin.site.register(Book)
+admin.site.register(Author)
+admin.site.register(Student)
+admin.site.register(Staff)
+admin.site.register(Liberian)
+admin.site.register(Borrowed)

@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Registered Students</h2>
+<table class="table" id="studentsTable">
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Matriculation Number</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for student in students %}
+        <tr data-student-id="{{ student.id }}">
+            <td>{{ student.FirstName }}</td>
+            <td>{{ student.MatriculationNumber }}</td>
+            <td>{{ student.Status }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const table = document.getElementById('studentsTable');
+    table.querySelectorAll('tbody tr').forEach(row => {
+        row.addEventListener('dblclick', () => {
+            const studentId = row.getAttribute('data-student-id');
+            if (studentId) {
+                window.location.href = `/student_detail/${studentId}/`;
+            }
+        });
+    });
+});
+</script>
+{% endblock %}

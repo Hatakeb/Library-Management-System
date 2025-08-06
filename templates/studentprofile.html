@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Student Profile</h2>
+{% if student %}
+<table class="table table-bordered">
+    <tr>
+        <th>Matriculation Number</th>
+        <td>{{ student.MatriculationNumber }}</td>
+    </tr>
+    <tr>
+        <th>First Name</th>
+        <td>{{ student.FirstName }}</td>
+    </tr>
+    <tr>
+        <th>Middle Name</th>
+        <td>{{ student.MiddleName }}</td>
+    </tr>
+    <tr>
+        <th>Last Name</th>
+        <td>{{ student.LastName }}</td>
+    </tr>
+    <tr>
+        <th>Date Joined</th>
+        <td>{{ student.DateJoined }}</td>
+    </tr>
+    <tr>
+        <th>Email</th>
+        <td>{{ user.email }}</td>
+    </tr>
+</table>
+{% else %}
+<p>No student profile found.</p>
+{% endif %}
+{% endblock %}

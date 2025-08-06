@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Manage Staff Status</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Staff ID</th>
+            <th>Name</th>
+            <th>Status</th>
+            <th>Edit</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for staff in staff_members %}
+        <tr>
+            <td>{{ staff.StaffID }}</td>
+            <td>{{ staff.FirstName }} {{ staff.LastName }}</td>
+            <td>{{ staff.Status }}</td>
+            <td><a href="{% url 'LMS-edit-staff-status' staff.id %}">Edit</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

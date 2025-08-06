@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block content %}
+<style type="text/css">
+  body {
+    color: #aa082e;
+    background-color: white;
+    font-family: 'Roboto', sans-serif;
+  }
+  .container {
+    margin-top: 50px;
+  }
+  .dashboard-header {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #aa082e;
+  }
+  .card {
+    margin-bottom: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  }
+  .card-header {
+    background-color: #aa082e;
+    color: black;
+    font-weight: bold;
+  }
+  .card-body {
+    background-color: #ffffff;
+  }
+  a {
+    color: #aa082e;
+    font-weight: bold;
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+</style>
+
+<div class="container">
+  <div class="dashboard-header">
+    <h2>Liberian Dashboard</h2>
+  </div>
+
+  <div class="card">
+    <div class="card-header">Welcome, {{ request.user.first_name }}!</div>
+    <div class="card-body">
+      <p>This is your dashboard overview.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">Book List</div>
+    <div class="card-body">
+      <p><a href="{% url 'LMS-booklist' %}">View Book List</a></p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">Issued Books</div>
+    <div class="card-body">
+      <p><a href="{% url 'LMS-issuedbooks' %}">View Issued Books</a></p>
+    </div>
+  </div>
+</div>
+{% endblock %}

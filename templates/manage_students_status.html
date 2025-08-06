@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Manage Students Status</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Matriculation Number</th>
+            <th>Name</th>
+            <th>Status</th>
+            <th>Edit</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for student in students %}
+        <tr>
+            <td>{{ student.MatriculationNumber }}</td>
+            <td>{{ student.FirstName }} {{ student.LastName }}</td>
+            <td>{{ student.Status }}</td>
+            <td><a href="{% url 'LMS-edit-student-status' student.id %}">Edit</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

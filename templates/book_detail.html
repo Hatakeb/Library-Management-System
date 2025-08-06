@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>{{ book.Title }}</h2>
+<p><strong>Authors:</strong>
+    {% for author in book.Authors.all %}
+        {{ author.FirstName }} {{ author.LastName }}{% if not forloop.last %}, {% endif %}
+    {% empty %}
+        No authors listed.
+    {% endfor %}
+</p>
+<p><strong>Categories:</strong>
+    {% for category in book.Categories.all %}
+        {{ category.name }}{% if not forloop.last %}, {% endif %}
+    {% empty %}
+        No categories listed.
+    {% endfor %}
+</p>
+<p><strong>Date Published:</strong> {{ book.DatePublished }}</p>
+<p><strong>Copies Owned:</strong> {{ book.CopiesOwned }}</p>
+
+<a href="{% url 'LMS-borrowbook' book.BookID %}">Borrow this book</a> | <a href="{% url 'LMS-booklist' %}">Back to list</a>
+{% endblock %}

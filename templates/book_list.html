@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Book List</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+  <style>
+    body {
+      background-color: #f8f9fa;
+      font-family: 'Roboto', sans-serif;
+      padding: 20px;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #343a40;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 12px;
+      border-bottom: 1px solid #dee2e6;
+      text-align: left;
+    }
+    th {
+      background-color: #e9ecef;
+    }
+    a {
+      color: #007bff;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  {% include "base.html" %}
+  <div class="container">
+    <h2>Book List</h2>
+    {% if books %}
+    <table>
+      <thead>
+        <tr>
+          <th>BookID</th>
+          <th>Title</th>
+          <th>Authors</th>
+          <th>Categories</th>
+          <th>Date Published</th>
+          <th>Copies Owned</th>
+          <th>Details</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for book in books %}
+        <tr>
+          <td>{{ book.BookID }}</td>
+          <td>{{ book.Title }}</td>
+          <td>
+            {% for author in book.Authors.all %}
+              {{ author.FirstName }} {{ author.LastName }}{% if not forloop.last %}, {% endif %}
+            {% empty %}
+              No authors
+            {% endfor %}
+          </td>
+          <td>
+            {% for category in book.Categories.all %}
+              {{ category.name }}{% if not forloop.last %}, {% endif %}
+            {% empty %}
+              No categories
+            {% endfor %}
+          </td>
+          <td>{{ book.DatePublished }}</td>
+          <td>{{ book.CopiesOwned }}</td>
+          <td><a href="{% url 'LMS-bookdetail' book.BookID %}">View</a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% else %}
+    <p>No books available.</p>
+    {% endif %}
+  </div>
+</body>
+</html>

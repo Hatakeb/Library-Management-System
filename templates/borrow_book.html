@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Borrow Book: {{ book.Title }}</h2>
+<form method="post">
+  {% csrf_token %}
+  <p>Are you sure you want to borrow this book?</p>
+  <button type="submit">Confirm Borrow</button>
+  <a href="{% url 'LMS-bookdetail' book.BookID %}">Cancel</a>
+</form>
+{% endblock %}

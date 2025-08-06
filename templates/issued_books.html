@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Issued Books</h2>
+<table border="1" cellpadding="5" cellspacing="0">
+  <thead>
+    <tr>
+      <th>Book Title</th>
+      <th>Borrower Type</th>
+      <th>Borrower Name</th>
+      <th>Borrower ID</th>
+      <th>Borrowed Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for borrowed in borrowed_books %}
+    <tr>
+      <td>{{ borrowed.BookID.Title }}</td>
+      <td>
+        {% if borrowed.student %}
+          Student
+        {% elif borrowed.staff %}
+          Staff
+        {% else %}
+          Unknown
+        {% endif %}
+      </td>
+      <td>
+        {% if borrowed.student %}
+          {{ borrowed.student.FirstName }} {{ borrowed.student.LastName }}
+        {% elif borrowed.staff %}
+          {{ borrowed.staff.FirstName }} {{ borrowed.staff.LastName }}
+        {% else %}
+          Unknown
+        {% endif %}
+      </td>
+      <td>
+        {% if borrowed.student %}
+          {{ borrowed.student.MatriculationNumber }}
+        {% elif borrowed.staff %}
+          {{ borrowed.staff.StaffID }}
+        {% else %}
+          N/A
+        {% endif %}
+      </td>
+      <td>{{ borrowed.BorrowedDate }}</td>
+    </tr>
+    {% empty %}
+    <tr>
+      <td colspan="5">No issued books found.</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
