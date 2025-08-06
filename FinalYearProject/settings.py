@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-+x!67!02!)k0qzt&hlf3nx9%+_w5@x!+d8o#kwhi_4&fv2!y9e'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['library-management-system-gs15.onrender.com']
 
 
 # Application definition
